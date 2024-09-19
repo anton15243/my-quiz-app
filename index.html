@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Викторина на знание мира</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Викторина на знание мира</h1>
+        <button id="theme-toggle">Светлая тема</button>
+    </header>
+
+    <div class="container">
+        <h2 id="question-text">Выберите уровень сложности:</h2>
+        <div id="difficulty-buttons">
+            <button onclick="showCategories('easy')">Легкий</button>
+            <button onclick="showCategories('medium')">Средний</button>
+            <button onclick="showCategories('hard')">Сложный</button>
+        </div>
+
+        <div id="category-buttons" style="display:none;">
+            <h2>Выберите категорию:</h2>
+            <button onclick="startQuiz('easy', 'geography')">География</button>
+            <button onclick="startQuiz('easy', 'flags')">Флаги</button>
+        </div>
+
+        <div id="quiz-container" style="display:none;">
+            <div class="timer" id="timer"></div>
+            <div class="question">
+                <h2 id="current-question"></h2>
+                <div class="options" id="options-list"></div>
+            </div>
+            <button id="hint-button" onclick="useHint()">Подсказка</button>
+            <button id="next-button" style="display:none;">Следующий вопрос</button>
+            <div class="result" id="result-text"></div>
+        </div>
+
+        <div id="final-score" style="display:none;">
+            <h2>Ваш результат: <span id="score"></span></h2>
+            <p>Правильные ответы: <span id="correct-answers"></span></p>
+            <p>Неправильные ответы: <span id="incorrect-answers"></span></p>
+            <input type="text" id="player-name" placeholder="Введите ваше имя" />
+            <button id="save-score">Сохранить результат</button>
+            <h3>Рейтинг игроков:</h3>
+            <ul id="leaderboard"></ul>
+            <button onclick="restartQuiz()">Перезапустить викторину</button>
+        </div>
+    </div>
+
+    <audio id="correct-sound" src="correct.mp3" preload="auto"></audio>
+    <audio id="incorrect-sound" src="incorrect.mp3" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
